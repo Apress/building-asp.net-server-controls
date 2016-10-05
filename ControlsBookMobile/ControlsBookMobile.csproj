@@ -1,0 +1,381 @@
+<VisualStudioProject>
+    <CSHARP
+        ProjectType = "Web"
+        ProductVersion = "7.10.3077"
+        SchemaVersion = "2.0"
+        ProjectGuid = "{12359AD3-6CAD-4C56-A672-AF4866679FAB}"
+    >
+        <Build>
+            <Settings
+                ApplicationIcon = ""
+                AssemblyKeyContainerName = ""
+                AssemblyName = "ControlsBookMobile"
+                AssemblyOriginatorKeyFile = ""
+                DefaultClientScript = "JScript"
+                DefaultHTMLPageLayout = "Grid"
+                DefaultTargetSchema = "IE50"
+                DelaySign = "false"
+                OutputType = "Library"
+                PreBuildEvent = ""
+                PostBuildEvent = ""
+                RootNamespace = "ControlsBookMobile"
+                RunPostBuildEvent = "OnBuildSuccess"
+                StartupObject = ""
+            >
+                <Config
+                    Name = "Debug"
+                    AllowUnsafeBlocks = "false"
+                    BaseAddress = "285212672"
+                    CheckForOverflowUnderflow = "false"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = "DEBUG;TRACE"
+                    DocumentationFile = ""
+                    DebugSymbols = "true"
+                    FileAlignment = "4096"
+                    IncrementalBuild = "false"
+                    NoStdLib = "false"
+                    NoWarn = ""
+                    Optimize = "false"
+                    OutputPath = "bin\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "4"
+                />
+                <Config
+                    Name = "Release"
+                    AllowUnsafeBlocks = "false"
+                    BaseAddress = "285212672"
+                    CheckForOverflowUnderflow = "false"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = "TRACE"
+                    DocumentationFile = ""
+                    DebugSymbols = "false"
+                    FileAlignment = "4096"
+                    IncrementalBuild = "false"
+                    NoStdLib = "false"
+                    NoWarn = ""
+                    Optimize = "true"
+                    OutputPath = "bin\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "4"
+                />
+            </Settings>
+            <References>
+                <Reference
+                    Name = "System"
+                    AssemblyName = "System"
+                    HintPath = "..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.dll"
+                />
+                <Reference
+                    Name = "System.Drawing"
+                    AssemblyName = "System.Drawing"
+                    HintPath = "..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Drawing.dll"
+                />
+                <Reference
+                    Name = "System.Data"
+                    AssemblyName = "System.Data"
+                    HintPath = "..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Data.dll"
+                />
+                <Reference
+                    Name = "System.Web"
+                    AssemblyName = "System.Web"
+                    HintPath = "..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Web.dll"
+                />
+                <Reference
+                    Name = "System.XML"
+                    AssemblyName = "System.Xml"
+                    HintPath = "..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
+                />
+                <Reference
+                    Name = "System.Web.Mobile"
+                    AssemblyName = "System.Web.Mobile"
+                    HintPath = "..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Web.Mobile.dll"
+                />
+                <Reference
+                    Name = "ControlsBookLib"
+                    Project = "{3C1B60BD-65DD-4DCE-BD9D-89624517B60A}"
+                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                />
+            </References>
+        </Build>
+        <Files>
+            <Include>
+                <File
+                    RelPath = "AssemblyInfo.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Global.asax"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Global.asax.cs"
+                    DependentUpon = "Global.asax"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Global.asax.resx"
+                    DependentUpon = "Global.asax.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Web.config"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Ch10\ads.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Ch10\ContainerControls.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Ch10\ContainerControls.aspx.cs"
+                    DependentUpon = "ContainerControls.aspx"
+                    SubType = "ASPXCodeBehind"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Ch10\ContainerControls.aspx.resx"
+                    DependentUpon = "ContainerControls.aspx.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Ch10\CustDB.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Ch10\ImageAdCalendar.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Ch10\ImageAdCalendar.aspx.cs"
+                    DependentUpon = "ImageAdCalendar.aspx"
+                    SubType = "ASPXCodeBehind"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Ch10\ImageAdCalendar.aspx.resx"
+                    DependentUpon = "ImageAdCalendar.aspx.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Ch10\ListControls.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Ch10\ListControls.aspx.cs"
+                    DependentUpon = "ListControls.aspx"
+                    SubType = "ASPXCodeBehind"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Ch10\ListControls.aspx.resx"
+                    DependentUpon = "ListControls.aspx.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Ch10\microsoft.gif"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Ch10\MobileBasics.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Ch10\MobileBasics.aspx.cs"
+                    DependentUpon = "MobileBasics.aspx"
+                    SubType = "ASPXCodeBehind"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Ch10\MobileBasics.aspx.resx"
+                    DependentUpon = "MobileBasics.aspx.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Ch10\msdn.gif"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Ch10\mslogo.bmp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Ch10\mslogo.wbmp"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Ch10\technet.gif"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Ch10\TxtandTransCtrls.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Ch10\TxtandTransCtrls.aspx.cs"
+                    DependentUpon = "TxtandTransCtrls.aspx"
+                    SubType = "ASPXCodeBehind"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Ch10\TxtandTransCtrls.aspx.resx"
+                    DependentUpon = "TxtandTransCtrls.aspx.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Ch10\ValidationControls.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Ch10\ValidationControls.aspx.cs"
+                    DependentUpon = "ValidationControls.aspx"
+                    SubType = "ASPXCodeBehind"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Ch10\ValidationControls.aspx.resx"
+                    DependentUpon = "ValidationControls.aspx.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Ch11\ControlsBookMobileFooter.ascx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Ch11\ControlsBookMobileFooter.ascx.cs"
+                    DependentUpon = "ControlsBookMobileFooter.ascx"
+                    SubType = "ASPXCodeBehind"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Ch11\ControlsBookMobileFooter.ascx.resx"
+                    DependentUpon = "ControlsBookMobileFooter.ascx.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Ch11\ControlsBookMobileHeader.ascx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Ch11\ControlsBookMobileHeader.ascx.cs"
+                    DependentUpon = "ControlsBookMobileHeader.ascx"
+                    SubType = "ASPXCodeBehind"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Ch11\ControlsBookMobileHeader.ascx.resx"
+                    DependentUpon = "ControlsBookMobileHeader.ascx.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Ch11\DeviceSpecific.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Ch11\DeviceSpecific.aspx.cs"
+                    DependentUpon = "DeviceSpecific.aspx"
+                    SubType = "ASPXCodeBehind"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Ch11\DeviceSpecific.aspx.resx"
+                    DependentUpon = "DeviceSpecific.aspx.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Ch11\ExternalStyleSheetClass.ascx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Ch11\ExternalStyleSheetClass.ascx.cs"
+                    DependentUpon = "ExternalStyleSheetClass.ascx"
+                    SubType = "ASPXCodeBehind"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Ch11\ExternalStyleSheetClass.ascx.resx"
+                    DependentUpon = "ExternalStyleSheetClass.ascx.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Ch11\line.bmp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Ch11\line.wbmp"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Ch11\MCTextBoxDemo.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Ch11\MCTextBoxDemo.aspx.cs"
+                    DependentUpon = "MCTextBoxDemo.aspx"
+                    SubType = "ASPXCodeBehind"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Ch11\MCTextBoxDemo.aspx.resx"
+                    DependentUpon = "MCTextBoxDemo.aspx.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Ch11\StylesheetExternal.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Ch11\StylesheetExternal.aspx.cs"
+                    DependentUpon = "StylesheetExternal.aspx"
+                    SubType = "ASPXCodeBehind"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Ch11\StylesheetExternal.aspx.resx"
+                    DependentUpon = "StylesheetExternal.aspx.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Ch11\StyleSheetInline.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Ch11\StyleSheetInline.aspx.cs"
+                    DependentUpon = "StyleSheetInline.aspx"
+                    SubType = "ASPXCodeBehind"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Ch11\StyleSheetInline.aspx.resx"
+                    DependentUpon = "StyleSheetInline.aspx.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Ch11\UserControlHost.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Ch11\UserControlHost.aspx.cs"
+                    DependentUpon = "UserControlHost.aspx"
+                    SubType = "ASPXCodeBehind"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Ch11\UserControlHost.aspx.resx"
+                    DependentUpon = "UserControlHost.aspx.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+            </Include>
+        </Files>
+    </CSHARP>
+</VisualStudioProject>
+

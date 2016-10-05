@@ -1,0 +1,1118 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Apress.GoogleControls</name>
+    </assembly>
+    <members>
+        <member name="T:Apress.GoogleControls.ConfigHelper">
+            <summary>
+            	Helper class to find nodes and get values from configuration section XML data
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.ConfigHelper.FindChildNode(System.Xml.XmlNode,System.String)">
+            <summary>
+            Pulls out child node from current XML node
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.ConfigHelper.GetStringValue(System.Xml.XmlNode,System.String,System.Boolean,System.String)">
+            <summary>
+            Gets string attribute value from Xml node
+            </summary>
+        </member>
+        <member name="T:Apress.GoogleControls.GoogleConfigSection">
+            <summary>
+            	Represents configuration section from web.config relating to the 
+            	GoogleControls web service related settings
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.GoogleConfigSection.#ctor(System.String,System.String,System.String)">
+            <summary>
+              Constructor for GoogleControls config section
+            </summary>
+            <param name="googleLicenseKey">License key for accessing Google web service.</param>
+            <param name="googleWebServiceUrl">Url for Google web service.</param>
+            <param name="proxyUrl">Url for proxy server if code is behind a firewall.</param>
+        </member>
+        <member name="P:Apress.GoogleControls.GoogleConfigSection.GoogleLicenseKey">
+            <summary>
+              Google web service license key (issued by Google)
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.GoogleConfigSection.GoogleWebServiceUrl">
+            <summary>
+               Url of Google web service
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.GoogleConfigSection.ProxyUrl">
+            <summary>
+              Url of a proxy server if the code is behind a firewall
+            </summary>
+        </member>
+        <member name="T:Apress.GoogleControls.GoogleConfigSectionHandler">
+            <summary>
+            	Retrieves instance of GoogleConfigSection fully populated from web.config
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.GoogleConfigSectionHandler.Create(System.Object,System.Object,System.Xml.XmlNode)">
+            <summary>
+              Create is called by the configuration section framework of ASP.NET to 
+              tell the section handler to pull GoogleConfigSection from the config file
+            </summary>
+            <param name="parent"></param>
+            <param name="configContext"></param>
+            <param name="section"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Apress.GoogleControls.GoogleSearchedEventArgs">
+            <summary>
+            Custom event class for passing GoogleSearchResult query info
+            between GoogleLib Search and Result controls
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.GoogleSearchedEventArgs.#ctor(Apress.GoogleControls.Service.GoogleSearchResult)">
+            <summary>
+            Constructor for GoogleSearchEventArgs
+            </summary>
+            <param name="result">Results from search of Google web service</param>
+        </member>
+        <member name="P:Apress.GoogleControls.GoogleSearchedEventArgs.Result">
+            <summary>
+            Results from search of Google web service
+            </summary>
+        </member>
+        <member name="T:Apress.GoogleControls.GoogleSearchedEventHandler">
+            <summary>
+            Delegate for notifying interested parties of Google search results
+            </summary>
+        </member>
+        <member name="T:Apress.GoogleControls.Service.GoogleSearchService">
+            <summary>
+            Generated Soap proxy client for calling Google web service
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.Service.GoogleSearchService.#ctor(System.String,System.String)">
+            <summary>
+            Constructor for Google Soap proxy
+            </summary>
+            <param name="googleWebServiceUrl">Url to Google Web service</param>
+            <param name="proxyUrl">Url to proxy server if code is behind firewall</param>
+        </member>
+        <member name="M:Apress.GoogleControls.Service.GoogleSearchService.doGoogleSearch(System.String,System.String,System.Int32,System.Int32,System.Boolean,System.String,System.Boolean,System.String,System.String,System.String)">
+            <summary>
+            Method for doing Google web service query
+            </summary>
+            <param name="key">Provided by Google, this is required for you to access the Google service. Google uses the key for authentication and logging. </param>
+            <param name="q">Query terms.</param>
+            <param name="start">Zero-based index of the first desired result. </param>
+            <param name="maxResults">Number of results desired per query. The maximum value per query is 10.
+            Note: If you do a query that doesn't have many matches, the actual number of results you get may be smaller than what you request.
+            </param>
+            <param name="filter">Activates or deactivates automatic results filtering, which hides very similar results and results that all come from the same Web host. Filtering tends to improve the end user experience on Google, but for your application you may prefer to turn it off. </param>
+            <param name="restrict">Restricts the search to a subset of the Google Web index, such as a country like "Ukraine" or a topic like "Linux."</param>
+            <param name="safeSearch">A Boolean value which enables filtering of adult content in the search results.</param>
+            <param name="lr">Language Restrict - Restricts the search to documents within one or more languages.</param>
+            <param name="ie">Input Encoding - this parameter has been deprecated and is ignored. All requests to the APIs should be made with UTF-8 encoding.</param>
+            <param name="oe">Output Encoding - this parameter has been deprecated and is ignored. All requests to the APIs should be made with UTF-8 encoding. </param>
+            <returns>GoogleSearchResult result output</returns>
+        </member>
+        <member name="T:Apress.GoogleControls.Service.GoogleSearchResult">
+            <summary>
+            Result from querying Google web service
+            </summary>
+        </member>
+        <member name="F:Apress.GoogleControls.Service.GoogleSearchResult.documentFiltering">
+            <summary>
+            A Boolean value indicating whether filtering was performed on the search
+            results. This will be "true" only if (a) you requested filtering and
+            (b) filtering actually occurred.
+            </summary>
+        </member>
+        <member name="F:Apress.GoogleControls.Service.GoogleSearchResult.searchComments">
+            <summary>
+            A text string intended for display to an end user. One of the most common
+            messages found here is a note that "stop words" were removed from the search automatically.
+            (This happens for very common words such as "and" and "as.")
+            </summary>
+        </member>
+        <member name="F:Apress.GoogleControls.Service.GoogleSearchResult.estimatedTotalResultsCount">
+            <summary>
+            The estimated total number of results that exist for the query.
+            Note: The estimated number may be either higher or lower than the actual number
+            of results that exist.
+            </summary>
+        </member>
+        <member name="F:Apress.GoogleControls.Service.GoogleSearchResult.estimateIsExact">
+            <summary>
+            A Boolean value indicating that the estimate is actually the exact value.
+            </summary>
+        </member>
+        <member name="F:Apress.GoogleControls.Service.GoogleSearchResult.resultElements">
+            <summary>
+            An array of resultElement items. This corresponds to the actual list of search results
+            </summary>
+        </member>
+        <member name="F:Apress.GoogleControls.Service.GoogleSearchResult.searchQuery">
+            <summary>
+            This is the value of the search request.
+            </summary>
+        </member>
+        <member name="F:Apress.GoogleControls.Service.GoogleSearchResult.startIndex">
+            <summary>
+            Indicates the index (1-based) of the first search result in resultElements.
+            </summary>
+        </member>
+        <member name="F:Apress.GoogleControls.Service.GoogleSearchResult.endIndex">
+            <summary>
+            Indicates the index (1-based) of the last search result in resultElements.
+            </summary>
+        </member>
+        <member name="F:Apress.GoogleControls.Service.GoogleSearchResult.searchTips">
+            <summary>
+            A text string intended for display to the end user. It provides instructive suggestions on how to use Google.
+            </summary>
+        </member>
+        <member name="F:Apress.GoogleControls.Service.GoogleSearchResult.directoryCategories">
+            <summary>
+            An array of directoryCategory items. This corresponds to the ODP directory matches for this search.
+            </summary>
+        </member>
+        <member name="F:Apress.GoogleControls.Service.GoogleSearchResult.searchTime">
+            <summary>
+            Text, floating-point number indicating the total server time to return the search results, measured in seconds.
+            </summary>
+        </member>
+        <member name="T:Apress.GoogleControls.Service.ResultElement">
+            <remarks/>
+        </member>
+        <member name="F:Apress.GoogleControls.Service.ResultElement.summary">
+            <summary>
+            If the search result has a listing in the ODP directory, the ODP summary appears here as a text string.
+            </summary>
+        </member>
+        <member name="F:Apress.GoogleControls.Service.ResultElement.URL">
+            <summary>
+            The URL of the search result, returned as text, with an absolute URL path.
+            </summary>
+        </member>
+        <member name="F:Apress.GoogleControls.Service.ResultElement.snippet">
+            <summary>
+            A snippet which shows the query in context on the URL where it appears. This is formatted HTML and usually includes bold tags within it. Note that the query term does not always appear in the snippet. Note: Query terms will be in highlighted in bold in the results, and line breaks will be included for proper text wrapping.
+            </summary>
+        </member>
+        <member name="F:Apress.GoogleControls.Service.ResultElement.title">
+            <summary>
+            The title of the search result, returned as HTML.
+            </summary>
+        </member>
+        <member name="F:Apress.GoogleControls.Service.ResultElement.cachedSize">
+            <summary>
+            Text (Integer + "k"). Indicates that a cached version of the Url is available; size is indicated in kilobytes.
+            </summary>
+        </member>
+        <member name="F:Apress.GoogleControls.Service.ResultElement.relatedInformationPresent">
+            <summary>
+            Boolean indicating that the "related:" query term is supported for this URL.
+            </summary>
+        </member>
+        <member name="F:Apress.GoogleControls.Service.ResultElement.hostName">
+            <summary>
+            When filtering occurs, a maximum of two results from any given host is returned.
+            When this occurs, the second resultElement that comes from that host contains the host name in this parameter.
+            </summary>
+        </member>
+        <member name="F:Apress.GoogleControls.Service.ResultElement.directoryCategory">
+            <summary>
+            See directoryTitle.
+            </summary>
+        </member>
+        <member name="F:Apress.GoogleControls.Service.ResultElement.directoryTitle">
+            <summary>
+            If the URL for this resultElement is contained in the ODP directory, the title that appears in the directory appears here as a text string.
+            Note that the directoryTitle may be different from the URL's title.
+            </summary>
+        </member>
+        <member name="T:Apress.GoogleControls.Service.DirectoryCategory">
+            <remarks/>
+        </member>
+        <member name="F:Apress.GoogleControls.Service.DirectoryCategory.fullViewableName">
+            <summary>
+            Text, containing the ODP directory name for the current ODP category.
+            </summary>
+        </member>
+        <member name="F:Apress.GoogleControls.Service.DirectoryCategory.specialEncoding">
+            <summary>
+            Specifies the encoding scheme of the directory information.
+            </summary>
+        </member>
+        <member name="T:Apress.GoogleControls.Pager">
+            <summary>
+            Pager control implements the paging functionality aggregated
+            by the Result control
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.Pager.CreateChildControls">
+            <summary>
+            Called by framework for composite controls to create control heirarchy
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.Pager.RenderContents(System.Web.UI.HtmlTextWriter)">
+            <summary>
+            Overridden to ensure styles are properly applied
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Pager.TagKey">
+            <summary>
+            Pager is based on span tag
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Pager.PageSize">
+            <summary>
+            Number of search results returned with query and displayed on page.
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Pager.PagerBarRange">
+            <summary>
+            Number of pages displayed in pager bar.
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Pager.PagerLinkStyle">
+            <summary>
+            Style of Pager control link display.
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Pager.StartIndex">
+            <summary>
+            Starting item index of search results.
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Pager.EndIndex">
+            <summary>
+            Ending item index of search list results.
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Pager.TotalResultsCount">
+            <summary>
+            Estimated total results count from query.
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Pager.Controls">
+            <summary>
+            Overridden to ensure Controls collection is created before external access
+            </summary>
+        </member>
+        <member name="T:Apress.GoogleControls.ResourceFactory">
+            <summary>
+            Allows for efficient access to a single ResourceManager instance
+            using a singleton type of factory pattern
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.ResourceFactory.Manager">
+            <summary>
+            Retrieves static instance of ResourceManager class
+            </summary>
+        </member>
+        <member name="T:Apress.GoogleControls.ResultPagerLinkStyle">
+            <summary>
+            	Determines whether search results paging includes the
+            	Google letter and previous/next button images
+            </summary>
+        </member>
+        <member name="F:Apress.GoogleControls.ResultPagerLinkStyle.Text">
+            <summary>
+            Render pager with text hyperlinks for search result navigation
+            </summary>
+        </member>
+        <member name="F:Apress.GoogleControls.ResultPagerLinkStyle.TextWithImages">
+            <summary>
+            Render pager with Google logo images for previous, next buttons
+            and images for each page above the text hyperlinks for search
+            result navigation
+            </summary>
+        </member>
+        <member name="T:Apress.GoogleControls.Result">
+            <summary>
+            	Result control displays the formatted results from a query of the
+            	Google search web service.
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.Result.#ctor">
+            <summary>
+            Default constructor for Result control
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.Result.Dispose(System.Boolean)">
+            <summary>
+            Internal resource cleanup routine called by Dispose and Finalize
+            </summary>
+            <param name="disposing">determines whether called via public Dispose (true)
+            or via finalization (false)</param>
+        </member>
+        <member name="M:Apress.GoogleControls.Result.Dispose">
+            <summary>
+              Public method to cleanup licensing resources of control
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.Result.Finalize">
+            <summary>
+            Finalize implementation that calls Dispose cleanup
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.Result.SaveViewState">
+            <summary>
+            Manual override of ViewState save method to put in custom styles for control templates
+            </summary>
+            <returns>Object array to persist to ViewState</returns>
+        </member>
+        <member name="M:Apress.GoogleControls.Result.LoadViewState(System.Object)">
+            <summary>
+            Manual override of ViewState load method to retrieve custom styles for control templates
+            </summary>
+            <param name="savedState">Object array retrieved from ViewState</param>
+        </member>
+        <member name="M:Apress.GoogleControls.Result.PrepareControlHierarchy">
+            <summary>
+            Build child control structure
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.Result.OnGoogleSearched(Apress.GoogleControls.GoogleSearchedEventArgs)">
+            <summary>
+              Protected method for invoking GoogleSearched event from within Result control
+            </summary>
+            <param name="e">Event arguments including search results</param>
+        </member>
+        <member name="M:Apress.GoogleControls.Result.OnItemCreated(Apress.GoogleControls.ResultItemEventArgs)">
+            <summary>
+              Protected method for invoking ItemCreated event from within Result control
+            </summary>
+            <param name="e">Event arguments</param>
+        </member>
+        <member name="M:Apress.GoogleControls.Result.OnItemDataBound(Apress.GoogleControls.ResultItemEventArgs)">
+            <summary>
+              Protected method for invoking ItemDataBound event from within Result control
+            </summary>
+            <param name="e">Event arguments</param>
+        </member>
+        <member name="M:Apress.GoogleControls.Result.OnBubbleEvent(System.Object,System.EventArgs)">
+            <summary>
+            Handles bubbled up events from child controls to catch paging events from Pager control
+            </summary>
+            <param name="sender">Control which is source of event</param>
+            <param name="e">Event arguments</param>
+            <returns></returns>
+        </member>
+        <member name="M:Apress.GoogleControls.Result.CreateChildControls">
+            <summary>
+            Called by framework for composite controls to create control heirarchy
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.Result.DataBind">
+            <summary>
+            Binds search control results to control contents
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.Result.RenderContents(System.Web.UI.HtmlTextWriter)">
+            <summary>
+            Override of base method of server controls that does rendering of HTML content
+            between the outer div tags
+            </summary>
+            <param name="writer">Stream class for HTML output</param>
+        </member>
+        <member name="P:Apress.GoogleControls.Result.TagKey">
+            <summary>
+              Override bases Result control on div HTML tag
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Result.PageSize">
+            <summary>
+            Number of search results returned with query and displayed on page.
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Result.StartIndex">
+            <summary>
+            Starting item index of search results.
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Result.EndIndex">
+            <summary>
+            Ending item index of search list results.
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Result.TotalResultsCount">
+            <summary>
+            Estimated total results count from query.
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Result.Query">
+            <summary>
+            Search query string.
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Result.Filtering">
+            <summary>
+            Apply Google filtering of search result set.
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Result.DisplayPager">
+            <summary>
+            Display paging links at bottom of search results.
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Result.PagerLinkStyle">
+            <summary>
+            Style of Pager control link display.
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Result.PagerBarRange">
+            <summary>
+            Number of pages displayed in pager bar.
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Result.DataSource">
+            <summary>
+            Data source which takes a GoogleSearchResult to build display.
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Result.Items">
+            <summary>
+            Collection of child ResultItem controls
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Result.HeaderStyle">
+            <summary>
+            The style to be applied to header template.
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Result.StatusStyle">
+            <summary>
+            The style to be applied to status template.
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Result.ItemStyle">
+            <summary>
+            The style to be applied to item template.
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Result.AlternatingItemStyle">
+            <summary>
+            The style to be applied to alternate item template.
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Result.SeparatorStyle">
+            <summary>
+            The style to be applied to the separator template
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Result.PagerStyle">
+            <summary>
+            The style to be applied to the footer template.
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Result.FooterStyle">
+            <summary>
+            The style to be applied to the footer template.
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Result.HeaderTemplate">
+            <summary>
+            The content to be shown at header of control.
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Result.StatusTemplate">
+            <summary>
+            The content to be shown in status area below header template.
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Result.ItemTemplate">
+            <summary>
+            The content to be shown with each item of the search result set.
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Result.AlternatingItemTemplate">
+            <summary>
+            The content to be shown with alternating items in the search result set.
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Result.SeparatorTemplate">
+            <summary>
+            The content to be put between each item in the search result set.
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Result.FooterTemplate">
+            <summary>
+            The content to be shown below search results at bottom of control.
+            </summary>
+        </member>
+        <member name="E:Apress.GoogleControls.Result.GoogleSearched">
+            <summary>
+            GoogleSearched event occurs when a Result control conducts a search
+            with google as part of paging operations and wants to notify interested
+            parties about the search results
+            </summary>
+        </member>
+        <member name="E:Apress.GoogleControls.Result.ItemCreated">
+            <summary>
+            ItemCreated event occurs when a ResultItem control is created to represent
+            a portion of the parent control for templating or paging
+            </summary>
+        </member>
+        <member name="E:Apress.GoogleControls.Result.ItemDataBound">
+            <summary>
+            ItemDataBound event occurs when a ResultItem control is databound to
+            the data source from the parent Result control
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Result.Controls">
+            <summary>
+            Overridden to ensure Controls collection is created before external access
+            </summary>
+        </member>
+        <member name="T:Apress.GoogleControls.ResultDesigner">
+            <summary>
+            Designer class for the Result server control
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.ResultDesigner.Initialize(System.ComponentModel.IComponent)">
+            <summary>
+            Initialize the resources of the designer
+            </summary>
+            <param name="component">Component which the designer is linked to</param>
+        </member>
+        <member name="M:Apress.GoogleControls.ResultDesigner.GetDesignTimeHtml">
+            <summary>
+            Provides HTML for the visual designer to display
+            </summary>
+            <returns>HTML string based on rendering the control with a dummy data source</returns>
+        </member>
+        <member name="M:Apress.GoogleControls.ResultDesigner.GetEmptyDesignTimeHtml">
+            <summary>
+            HTML rendered when control has an "empty" configuration
+            </summary>
+            <returns>HTML string</returns>
+        </member>
+        <member name="M:Apress.GoogleControls.ResultDesigner.GetErrorDesignTimeHtml(System.Exception)">
+            <summary>
+            HTML rendered when control has an "error" in its configuration
+            </summary>
+            <returns>HTML string</returns>
+        </member>
+        <member name="M:Apress.GoogleControls.ResultDesigner.CreateTemplateEditingFrame(System.Web.UI.Design.TemplateEditingVerb)">
+            <summary>
+            Creates a template editing frame for a specified designer verb. 
+            </summary>
+            <param name="verb">The template editing verb to create a template editing frame for. </param>
+            <returns>ITemplateEditingFrame-based frame instance</returns>
+        </member>
+        <member name="M:Apress.GoogleControls.ResultDesigner.Dispose(System.Boolean)">
+            <summary>
+            Release designer resources via explicit invocation of IDispose pattern
+            </summary>
+            <param name="disposing">called explicitly (true) or implicitly as part of Finalization (false) </param>
+        </member>
+        <member name="M:Apress.GoogleControls.ResultDesigner.GetCachedTemplateEditingVerbs">
+            <summary>
+            Gets array of Template editing verbs from cache
+            </summary>
+            <returns>TemplateEditingVerb array</returns>
+        </member>
+        <member name="M:Apress.GoogleControls.ResultDesigner.GetTemplateContent(System.Web.UI.Design.ITemplateEditingFrame,System.String,System.Boolean@)">
+            <summary>
+            Gets the current string value of a selected template in design mode
+            </summary>
+            <param name="editingFrame">The template editing frame to retrieve the content of.</param>
+            <param name="templateName">Name of the template</param>
+            <param name="allowEditing">Can the template be changed or is it read-only.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Apress.GoogleControls.ResultDesigner.OnComponentChanged(System.Object,System.ComponentModel.Design.ComponentChangedEventArgs)">
+            <summary>
+            Called when the component has been changed
+            </summary>
+            <param name="sender">Sender of the event</param>
+            <param name="e">Event data including member that was changed.</param>
+        </member>
+        <member name="M:Apress.GoogleControls.ResultDesigner.OnStylesChanged">
+            <summary>
+            Override of method that is invoked when control styles change
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.ResultDesigner.OnTemplateEditingVerbsChanged">
+            <summary>
+            Override of method that is invoked when template editing verbs change
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.ResultDesigner.SetTemplateContent(System.Web.UI.Design.ITemplateEditingFrame,System.String,System.String)">
+            <summary>
+            Sets the current string value of a selected template in design mode
+            </summary>
+            <param name="editingFrame">The template editing frame to retrieve the content of.</param>
+            <param name="templateName">Name of the template</param>
+            <param name="templateContent">Content retrieved from frame in designer.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Apress.GoogleControls.ResultDesigner.AllowResize">
+            <summary>
+            Determines if designer allows control to be resized in editor
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.ResultDesigner.TemplatesExist">
+            <summary>
+            Checks to see if any templates have their content set to a non-empty value
+            </summary>
+        </member>
+        <member name="T:Apress.GoogleControls.ResultDummyDataSource">
+            <summary>
+            Provides a fictional Data source to show control rendering of 
+            templates while control is in design-time mode
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.ResultDummyDataSource.GetGoogleSearchResults(System.Int32)">
+            <summary>
+            Returns a Service.GoogleSearchResult data set that is valid
+            according to web service guidelines
+            </summary>
+            <param name="pageSize">page size of the Service.GoogleSearchResult set</param>
+            <returns>Service.GoogleSearchResult instance with Service.resultElement 
+            entries present according to page size</returns>
+        </member>
+        <member name="M:Apress.GoogleControls.ResultDummyDataSource.GetResultElement(System.Int32)">
+            <summary>
+            Returns a valid Service.ResultElement instance
+            </summary>
+            <param name="index">Index to help create title and url</param>
+            <returns>Fully populated Service.ResultElement instance</returns>
+        </member>
+        <member name="M:Apress.GoogleControls.ResultDummyDataSource.GetDirectoryCategory">
+            <summary>
+            Returns a populated Service.DirectoryCategory instance
+            </summary>
+            <returns>Fully populated Service.DirectoryCategory instance</returns>
+        </member>
+        <member name="T:Apress.GoogleControls.ResultItemType">
+            <summary>
+            Enum which indicates what type of content/template/styles the ResultItem control represents
+            </summary>
+        </member>
+        <member name="F:Apress.GoogleControls.ResultItemType.Header">
+            <summary>
+            Represents top of control output
+            </summary>
+        </member>
+        <member name="F:Apress.GoogleControls.ResultItemType.Status">
+            <summary>
+            Represents status section below header
+            </summary>
+        </member>
+        <member name="F:Apress.GoogleControls.ResultItemType.Item">
+            <summary>
+            Represents search result item output
+            </summary>
+        </member>
+        <member name="F:Apress.GoogleControls.ResultItemType.AlternatingItem">
+            <summary>
+            Represents search result alternating item output
+            </summary>
+        </member>
+        <member name="F:Apress.GoogleControls.ResultItemType.Separator">
+            <summary>
+            Represents separation between search result item or alternating item output
+            </summary>
+        </member>
+        <member name="F:Apress.GoogleControls.ResultItemType.Pager">
+            <summary>
+            Represents paging area below search result items
+            </summary>
+        </member>
+        <member name="F:Apress.GoogleControls.ResultItemType.Footer">
+            <summary>
+            Represents bottom of control output below paging area
+            </summary>
+        </member>
+        <member name="T:Apress.GoogleControls.ResultItem">
+            <summary>
+            Primary child control of Result that contains all of the various templates
+            when instantiated.
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.ResultItem.#ctor(System.Int32,Apress.GoogleControls.ResultItemType,System.Object)">
+            <summary>
+            Default constructor of ResultItem control
+            </summary>
+            <param name="index">Index of control in collection of ResultItem controls under Result</param>
+            <param name="type">Type of template the ResultItem control represents</param>
+            <param name="dataItem">Data from search query</param>
+        </member>
+        <member name="P:Apress.GoogleControls.ResultItem.DataItem">
+            <summary>
+            Data from search query
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.ResultItem.ItemIndex">
+            <summary>
+            Index of control in collection of ResultItem controls under Result
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.ResultItem.ItemType">
+            <summary>
+            Type of template the ResultItem control represents
+            </summary>
+        </member>
+        <member name="T:Apress.GoogleControls.ResultItemEventHandler">
+            <summary>
+            Delegate signature for raising ResultItemEvent events
+            </summary>
+        </member>
+        <member name="T:Apress.GoogleControls.ResultItemEventArgs">
+            <summary>
+            Specialized EventArgs which contains a RsultItem instance
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.ResultItemEventArgs.#ctor(Apress.GoogleControls.ResultItem)">
+            <summary>
+            Default constructor for ResultItemEventArgs
+            </summary>
+            <param name="item">ResultItem control instance</param>
+        </member>
+        <member name="P:Apress.GoogleControls.ResultItemEventArgs.Item">
+            <summary>
+            ResultItem control instance
+            </summary>
+        </member>
+        <member name="T:Apress.GoogleControls.ResultItemCollection">
+            <summary>
+            Strongly typed collection of ResultItem controls
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.ResultItemCollection.#ctor(System.Collections.ArrayList)">
+            <summary>
+            Constructor to populate collection from an ArrayList
+            </summary>
+            <param name="list">ArrayList of ResultItem controls</param>
+        </member>
+        <member name="M:Apress.GoogleControls.ResultItemCollection.Add(Apress.GoogleControls.ResultItem)">
+            <summary>
+            Add ResultItem control to collection
+            </summary>
+            <param name="item">ResultItem control</param>
+            <returns>Zero based index of added ResultItem in colleciton</returns>
+        </member>
+        <member name="M:Apress.GoogleControls.ResultItemCollection.Insert(System.Int32,Apress.GoogleControls.ResultItem)">
+            <summary>
+            Add ResultItem control to collection at specified index
+            </summary>
+            <param name="index">Zero based index</param>
+            <param name="item">ResultItem control</param>
+        </member>
+        <member name="M:Apress.GoogleControls.ResultItemCollection.Remove(Apress.GoogleControls.ResultItem)">
+            <summary>
+            Remove ResultItem from collection
+            </summary>
+            <param name="item">ResultItem control</param>
+        </member>
+        <member name="M:Apress.GoogleControls.ResultItemCollection.Contains(Apress.GoogleControls.ResultItem)">
+            <summary>
+            Check for presense of ResultItem control in collection
+            </summary>
+            <param name="item">ResultItem control</param>
+            <returns>bool value result of check</returns>
+        </member>
+        <member name="M:Apress.GoogleControls.ResultItemCollection.IndexOf(Apress.GoogleControls.ResultItem)">
+            <summary>
+            Returns zero based index of ResultItem control in collection
+            </summary>
+            <param name="item">ResultItem control</param>
+            <returns>Zero based index of ResultItem control in collection</returns>
+        </member>
+        <member name="M:Apress.GoogleControls.ResultItemCollection.CopyTo(Apress.GoogleControls.ResultItemCollection,System.Int32)">
+            <summary>
+            Copy this ResultItemCollection to another starting at index position
+            </summary>
+            <param name="col">ResultItemCollection to copy to</param>
+            <param name="index">Starting index to begin copy operations</param>
+        </member>
+        <member name="P:Apress.GoogleControls.ResultItemCollection.Item(System.Int32)">
+            <summary>
+            Get ResultItem control at index
+            </summary>
+        </member>
+        <member name="T:Apress.GoogleControls.ResultItemTemplate">
+            <summary>
+            	Default ResultItemTemplate implementation used by a 
+            	stock GoogleLib Result control without a ItemTemplate
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.ResultItemTemplate.InstantiateIn(System.Web.UI.Control)">
+            <summary>
+            Method puts template controls into container control
+            </summary>
+            <param name="container">Outside control container to template items</param>
+        </member>
+        <member name="T:Apress.GoogleControls.ResultStatusTemplate">
+            <summary>
+            	Default StatusTemplate implementation used by a 
+            	stock GoogleLib Result control without a StatusTemplate
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.ResultStatusTemplate.InstantiateIn(System.Web.UI.Control)">
+            <summary>
+            Method puts template controls into container control
+            </summary>
+            <param name="container">Outside control container to template items</param>
+        </member>
+        <member name="T:Apress.GoogleControls.RsaLicense">
+            <summary>
+            License class for server controls using RSA crypto
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.RsaLicense.#ctor(System.Type,System.String,System.String,System.DateTime)">
+            <summary>
+              Constructor for RsaLicense control license class
+            </summary>
+            <param name="type">Type of server control to license</param>
+            <param name="key">Full key value of license</param>
+            <param name="guid">Guid for server control type build</param>
+            <param name="expireDate">Date license expires</param>
+        </member>
+        <member name="M:Apress.GoogleControls.RsaLicense.Dispose">
+            <summary>
+            Required override for License derived controls
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.RsaLicense.LicenseKey">
+            <summary>
+            Full key value of license stored in license file
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.RsaLicense.Type">
+            <summary>
+            Server control type the license is bound to
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.RsaLicense.Guid">
+            <summary>
+            Guid representing specific build of server control type
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.RsaLicense.ExpireDate">
+            <summary>
+            Expiration date of license
+            </summary>
+        </member>
+        <member name="T:Apress.GoogleControls.RsaLicenseCache">
+            <summary>
+              Custom cache collection built on Hashtable for storing RsaLicense instances
+            </summary>
+        </member>
+        <member name="T:Apress.GoogleControls.RsaLicenseDataAttribute">
+            <summary>
+            Custom attribute for annotating licensing data on GoogleLib controls
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.RsaLicenseDataAttribute.#ctor(System.String,System.String)">
+            <summary>
+            Constructor for RsaLicenseDataAttribute
+            </summary>
+            <param name="guid"></param>
+            <param name="publicKey"></param>
+        </member>
+        <member name="P:Apress.GoogleControls.RsaLicenseDataAttribute.Guid">
+            <summary>
+            Guid representing specific build of server control type
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.RsaLicenseDataAttribute.PublicKey">
+            <summary>
+            Public key representing specific build of server control type
+            </summary>
+        </member>
+        <member name="T:Apress.GoogleControls.RsaLicenseProvider">
+            <summary>
+            Custom license provider for GoogleLib which use RSA crypto
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.RsaLicenseProvider.GetLicense(System.ComponentModel.LicenseContext,System.Type,System.Object,System.Boolean)">
+            <summary>
+            Called by LicenseManager to retrieve a license
+            </summary>
+            <param name="context">Context of request (design/runtime)</param>
+            <param name="type">Control type needing license</param>
+            <param name="instance">Control instance needing license</param>
+            <param name="allowExceptions">true if a LicenseException should be thrown when the component cannot be granted a license; otherwise, false.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Apress.GoogleControls.RsaLicenseProvider.GetRsaLicenseDataAttribute(System.Type)">
+            <summary>
+            Method to look up custom licensing attribute on server control
+            </summary>
+            <param name="type">Control type for custom attribute lookup</param>
+            <returns></returns>
+        </member>
+        <member name="M:Apress.GoogleControls.RsaLicenseProvider.LoadLicenseData(System.Type)">
+            <summary>
+            Methods retireves license key from license file
+            </summary>
+            <param name="type">Control type to retrieve license data for </param>
+            <returns></returns>
+        </member>
+        <member name="M:Apress.GoogleControls.RsaLicenseProvider.IsKeyValid(System.String,System.String,System.String,System.Type,System.DateTime@)">
+            <summary>
+            Method verifies the validaty of license key information
+            </summary>
+            <param name="keyValue">License key value</param>
+            <param name="publicKey">Public key of version-specific control build</param>
+            <param name="attrGuid">Guid of version-specific control build</param>
+            <param name="type">Type of control being licensed</param>
+            <param name="expireDate">Date license expires</param>
+            <returns></returns>
+        </member>
+        <member name="M:Apress.GoogleControls.RsaLicenseProvider.VerifyHash(System.String,System.String,System.String,System.String)">
+            <summary>
+            Helper method to verify hash value in license key using RSA
+            public key crypto
+            </summary>
+            <param name="publicKey">Public key of version-specific control build</param>
+            <param name="guid">Guid of version-specific control build</param>
+            <param name="expires">Date of expiration for license</param>
+            <param name="signature">Signature value in license key used for verification</param>
+            <returns></returns>
+        </member>
+        <member name="T:Apress.GoogleControls.Search">
+            <summary>
+            	Search control displays input textbox and button to capture input and start search process.
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.Search.#ctor">
+            <summary>
+            Default constructor for Search control
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.Search.Dispose(System.Boolean)">
+            <summary>
+            Internal resource cleanup routine called by Dispose and Finalize
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:Apress.GoogleControls.Search.Dispose">
+            <summary>
+              Public method to cleanup licensing resources of control
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.Search.Finalize">
+            <summary>
+            Finalize implementation that calls Dispose cleanup
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.Search.SearchButtonClick(System.Object,System.EventArgs)">
+            <summary>
+            Click event handler for search button
+            </summary>
+            <param name="s">Search button</param>
+            <param name="e">Event arguments</param>
+        </member>
+        <member name="M:Apress.GoogleControls.Search.SearchTextBoxTextChanged(System.Object,System.EventArgs)">
+            <summary>
+            TextChanged event handler for query textbox
+            </summary>
+            <param name="s">Query textbox </param>
+            <param name="e">Event arguments</param>
+        </member>
+        <member name="M:Apress.GoogleControls.Search.OnGoogleSearched(Apress.GoogleControls.GoogleSearchedEventArgs)">
+            <summary>
+              Protected method for invoking GoogleSearched event from within Result control
+            </summary>
+            <param name="e">Event arguments including search results</param>
+        </member>
+        <member name="M:Apress.GoogleControls.Search.CreateChildControls">
+            <summary>
+            Called by framework for composite controls to create control heirarchy
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Search.TagKey">
+            <summary>
+              Override bases Search control on div HTML tag
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Search.ResultControl">
+            <summary>
+            	GoogleControls Result control to bind search results to for display
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Search.Query">
+            <summary>
+            	Search query string
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Search.RedirectToGoogle">
+            <summary>
+            	Redirect search query to Google site web pages.
+            </summary>
+        </member>
+        <member name="E:Apress.GoogleControls.Search.GoogleSearched">
+            <summary>
+            GoogleSearched event occurs when a Search control conducts a search
+            with google and wants to notify interested parties about the search results
+            </summary>
+        </member>
+        <member name="P:Apress.GoogleControls.Search.Controls">
+            <summary>
+            Overridden to ensure Controls collection is created before external access
+            </summary>
+        </member>
+        <member name="T:Apress.GoogleControls.SearchDesigner">
+            <summary>
+            Designer for GoogleLib Search control
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.SearchDesigner.Initialize(System.ComponentModel.IComponent)">
+            <summary>
+            Initialize the resources of the designer
+            </summary>
+            <param name="component">Component which the designer is linked to</param>
+        </member>
+        <member name="M:Apress.GoogleControls.SearchDesigner.GetDesignTimeHtml">
+            <summary>
+            Provides HTML for the visual designer to display
+            </summary>
+            <returns>HTML string based on rendering the control</returns>
+        </member>
+        <member name="M:Apress.GoogleControls.SearchDesigner.GetEmptyDesignTimeHtml">
+            <summary>
+            HTML rendered when control has an "empty" configuration
+            </summary>
+            <returns>HTML string</returns>
+        </member>
+        <member name="M:Apress.GoogleControls.SearchDesigner.GetErrorDesignTimeHtml(System.Exception)">
+            <summary>
+            HTML rendered when control has an "error" in its configuration
+            </summary>
+            <returns>HTML string</returns>
+        </member>
+        <member name="T:Apress.GoogleControls.Service.SearchUtil">
+            <summary>
+            	Utility class for abstracting Google web service proxy work
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.Service.SearchUtil.SearchGoogleService(System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+              Static method for searching Google that wraps web service proxy code for easy invocation.
+            </summary>
+            <param name="query">Query to Google search web service</param>
+            <param name="startIndex">Starting index of result set</param>
+            <param name="maxResults">Maximum number of results to return</param>
+            <param name="filtering">Turn on Google filtering for relevancy</param>
+            <returns></returns>
+        </member>
+        <member name="T:Apress.GoogleControls.Service.GoogleSearchException">
+            <summary>
+              Exception for problems searching Google via web service
+            </summary>
+        </member>
+        <member name="M:Apress.GoogleControls.Service.GoogleSearchException.#ctor(System.String,System.Web.Services.Protocols.SoapException)">
+            <summary>
+              Constructor takes an error message and the inner SoapException
+              raised by the web service plumbing in .NET
+            </summary>
+            <param name="message">Error Message</param>
+            <param name="e">Soap Exception raised by Google web service</param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,61 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlsBookLib", "ControlsBookLib\ControlsBookLib.csproj", "{3C1B60BD-65DD-4DCE-BD9D-89624517B60A}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDelegates", "TestDelegates\TestDelegates.csproj", "{487C11AD-4E4B-44A6-A41E-E333F95F7341}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlsBookMobile", "http://localhost/ControlsBookMobile/ControlsBookMobile.csproj", "{12359AD3-6CAD-4C56-A672-AF4866679FAB}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LicenseGenerator", "LicenseGenerator\LicenseGenerator.csproj", "{D28F8271-C0BC-41A4-BE8C-0744C8F26D44}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlsBookWeb", "http://localhost/ControlsBookWeb/ControlsBookWeb.csproj", "{372010E0-B4BF-4479-8852-537B091E3DEC}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apress.GoogleControls", "Apress.GoogleControls\Apress.GoogleControls.csproj", "{A5E9B4B7-F78C-4ECB-8DC0-79114DE1B1E7}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{3C1B60BD-65DD-4DCE-BD9D-89624517B60A}.Debug.ActiveCfg = Debug|.NET
+		{3C1B60BD-65DD-4DCE-BD9D-89624517B60A}.Debug.Build.0 = Debug|.NET
+		{3C1B60BD-65DD-4DCE-BD9D-89624517B60A}.Release.ActiveCfg = Release|.NET
+		{3C1B60BD-65DD-4DCE-BD9D-89624517B60A}.Release.Build.0 = Release|.NET
+		{487C11AD-4E4B-44A6-A41E-E333F95F7341}.Debug.ActiveCfg = Debug|.NET
+		{487C11AD-4E4B-44A6-A41E-E333F95F7341}.Debug.Build.0 = Debug|.NET
+		{487C11AD-4E4B-44A6-A41E-E333F95F7341}.Release.ActiveCfg = Release|.NET
+		{487C11AD-4E4B-44A6-A41E-E333F95F7341}.Release.Build.0 = Release|.NET
+		{12359AD3-6CAD-4C56-A672-AF4866679FAB}.Debug.ActiveCfg = Debug|.NET
+		{12359AD3-6CAD-4C56-A672-AF4866679FAB}.Debug.Build.0 = Debug|.NET
+		{12359AD3-6CAD-4C56-A672-AF4866679FAB}.Release.ActiveCfg = Release|.NET
+		{12359AD3-6CAD-4C56-A672-AF4866679FAB}.Release.Build.0 = Release|.NET
+		{D28F8271-C0BC-41A4-BE8C-0744C8F26D44}.Debug.ActiveCfg = Debug|.NET
+		{D28F8271-C0BC-41A4-BE8C-0744C8F26D44}.Debug.Build.0 = Debug|.NET
+		{D28F8271-C0BC-41A4-BE8C-0744C8F26D44}.Release.ActiveCfg = Release|.NET
+		{D28F8271-C0BC-41A4-BE8C-0744C8F26D44}.Release.Build.0 = Release|.NET
+		{372010E0-B4BF-4479-8852-537B091E3DEC}.Debug.ActiveCfg = Debug|.NET
+		{372010E0-B4BF-4479-8852-537B091E3DEC}.Debug.Build.0 = Debug|.NET
+		{372010E0-B4BF-4479-8852-537B091E3DEC}.Release.ActiveCfg = Release|.NET
+		{372010E0-B4BF-4479-8852-537B091E3DEC}.Release.Build.0 = Release|.NET
+		{A5E9B4B7-F78C-4ECB-8DC0-79114DE1B1E7}.Debug.ActiveCfg = Debug|.NET
+		{A5E9B4B7-F78C-4ECB-8DC0-79114DE1B1E7}.Debug.Build.0 = Debug|.NET
+		{A5E9B4B7-F78C-4ECB-8DC0-79114DE1B1E7}.Release.ActiveCfg = Release|.NET
+		{A5E9B4B7-F78C-4ECB-8DC0-79114DE1B1E7}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

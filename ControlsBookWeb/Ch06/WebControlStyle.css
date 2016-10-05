@@ -1,0 +1,17 @@
+.yellowbackground
+{
+  background-color: #ffff66;
+}
+
+.grayborder
+{
+  border-right: gray thin groove;
+  padding-right: 2px;
+  border-top: gray thin groove;
+  padding-left: 2px;
+  padding-bottom: 2px;
+  border-left: gray thin groove;
+  padding-top: 2px;
+  border-bottom: gray thin groove;
+}
+
